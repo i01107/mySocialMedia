@@ -7,11 +7,38 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/css">
+      .flasher {
+        position: relative;
+        padding: .75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+      }
+      .notice {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+      }
+      .alert {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+      }
+    </style>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if !notice.blank? %>
+      <p class="flasher notice"><%= notice %></p>
+    <% end %>
+    <% if !alert.blank? %>
+      <p class="flasher alert"><%= alert %></p>
+    <% end %>
+    <div>
+      Menu : 
+      <%= link_to 'LOGOUT', destroy_user_session_path, method: 'delete' %>
+    </div>
     <%= yield %>
   </body>
 </html>
