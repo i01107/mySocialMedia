@@ -55,3 +55,10 @@ node_modules/
 .rbenv-gemsets
 .ruby-version
 /config/database.yml
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
