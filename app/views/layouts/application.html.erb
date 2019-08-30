@@ -25,6 +25,30 @@
         background-color: #f8d7da;
         border-color: #f5c6cb;
       }
+      .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        text-decoration: none;
+      }
+      .btn-dark {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+      }
     </style>
   </head>
 
@@ -37,8 +61,9 @@
     <% end %>
     <% if current_user %>
       <div>
-        Menu : 
-        <%= link_to 'LOGOUT', destroy_user_session_path, method: 'delete' %>
+        <h1>Welcome, <%= user_full_name %></h1>
+        <%= link_to "EDIT ACCOUNT", edit_user_registration_path, class: "btn btn-dark" %>
+        <%= link_to 'LOGOUT', destroy_user_session_path, class: "btn btn-dark", method: 'delete' %>
       </div>
     <% end %>
     <%= yield %>
