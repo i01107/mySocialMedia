@@ -1,2 +1,35 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row">
+  <div class="col-4">
+    <div class="section">
+      <h3>Find User</h3>
+      <%= form_with(method: "get", local: true) do %>
+        <%= text_field_tag :search_term, nil, placeholder: 'email' %>
+        <%= submit_tag("search") %>
+      <% end %>
+      <% if @searched_users %>
+        <ul>
+          <% @searched_users.each do |su| %>
+            <li><%= su.first_name %> <%= follow_or_unfollow(su.id) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <h4>Followings</h4>
+      <ul>
+        <% @followings.each do |su| %>
+          <li><%= su.first_name %> <%= follow_or_unfollow(su.id) %></li>
+        <% end %>
+      </ul>
+      <h4>Followers</h4>
+      <ul>
+        <% @followers.each do |su| %>
+          <li><%= su.first_name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="section">
+      <h3>Feeds</h3>
+    </div>
+  </div>
+</div>
