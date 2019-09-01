@@ -8,6 +8,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style type="text/css">
+      body {
+        font-size: 13px;
+      }
+      .section {
+        background-color: #fff;
+        border: 1px solid #dddfe2;
+        border-radius: 3px;
+        padding: 10px;
+      }
       .flasher {
         position: relative;
         padding: .75rem 1.25rem;
@@ -38,7 +47,6 @@
         background-color: transparent;
         border: 1px solid transparent;
         padding: .375rem .75rem;
-        font-size: 1rem;
         line-height: 1.5;
         border-radius: .25rem;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -53,19 +61,25 @@
   </head>
 
   <body>
-    <% if !notice.blank? %>
-      <p class="flasher notice"><%= notice %></p>
-    <% end %>
-    <% if !alert.blank? %>
-      <p class="flasher alert"><%= alert %></p>
-    <% end %>
-    <% if current_user %>
-      <div>
-        <h1>Welcome, <%= user_full_name %></h1>
-        <%= link_to "EDIT ACCOUNT", edit_user_registration_path, class: "btn btn-dark" %>
-        <%= link_to 'LOGOUT', destroy_user_session_path, class: "btn btn-dark", method: 'delete' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <% if !notice.blank? %>
+            <p class="flasher notice"><%= notice %></p>
+          <% end %>
+          <% if !alert.blank? %>
+            <p class="flasher alert"><%= alert %></p>
+          <% end %>
+          <% if current_user %>
+            <div>
+              <h3>Welcome, <%= user_full_name %></h3>
+              <%= link_to "EDIT ACCOUNT", edit_user_registration_path, class: "btn btn-dark" %>
+              <%= link_to 'LOGOUT', destroy_user_session_path, class: "btn btn-dark", method: 'delete' %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
