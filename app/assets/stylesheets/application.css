@@ -18,6 +18,9 @@
 body {
   font-size: 13px;
 }
+hr {
+  margin: 20px 0;
+}
 .section {
   background-color: #fff;
   border: 1px solid #dddfe2;

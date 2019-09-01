@@ -27,9 +27,29 @@
       </ul>
     </div>
   </div>
-  <div class="col-8">
+  
+  <div class="col-4">
     <div class="section">
-      <h3>Feeds</h3>
+      <h3>My Feeds</h3>
+      <%= form_with(model: @feed, local: true) do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.text_area :content, style: "width: 100%;" %>
+        <%= submit_tag("create new feed") %>
+      <% end %>
+      <hr>
+      <% @feeds.each do |feed| %>
+        <%= form_for(feed) do |f| %>
+          <%= f.hidden_field :user_id %>
+          <%= f.text_area :content, style: "width: 100%;" %>
+          <%= submit_tag("update feed") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="section">
+      <h3>Friends Feeds</h3>
     </div>
   </div>
 </div>

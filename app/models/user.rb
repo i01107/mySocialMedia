@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   has_many :inverse_followings, class_name: "Fellowship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followings, source: :user
+
+  has_many :feeds
 end

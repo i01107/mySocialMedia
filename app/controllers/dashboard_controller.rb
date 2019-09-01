@@ -7,6 +7,8 @@ class DashboardController < ApplicationController
 
     conditions = "id != #{current_user.id} AND (email rlike '#{params[:search_term]}' OR first_name rlike '#{params[:search_term]}' OR last_name rlike '#{params[:search_term]}')"
   	@searched_users = User.where(conditions) if params[:search_term]
+    @feed = Feed.new
+    @feeds = current_user.feeds.order(id: :desc)
   end
 
   def follow
