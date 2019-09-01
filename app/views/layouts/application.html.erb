@@ -73,6 +73,7 @@
           <% if current_user %>
             <div>
               <h3>Welcome, <%= user_full_name %></h3>
+              <%= link_to "HOME", authenticated_root_path, class: "btn btn-dark" %>
               <%= link_to "EDIT ACCOUNT", edit_user_registration_path, class: "btn btn-dark" %>
               <%= link_to 'LOGOUT', destroy_user_session_path, class: "btn btn-dark", method: 'delete' %>
             </div>
