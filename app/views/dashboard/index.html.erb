@@ -49,6 +49,21 @@
 
   <div class="col-4">
     <div class="section">
+      <h3>Search my Feeds</h3>
+      <%= form_with(method: "get", local: true) do %>
+        <%= text_field_tag :keyword, nil, placeholder: 'keyword' %>
+        <%= submit_tag("search") %>
+      <% end %>
+      <hr>
+      <% if @searched_feeds %>
+        <ul>
+          <% @searched_feeds.each do |sf| %>
+            <li><%= sf.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="section">
       <h3>Following Feeds</h3>
       <% @followings.each do |fol| %>
         <% fol.feeds.each do |f| %>

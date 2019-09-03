@@ -9,6 +9,7 @@ class DashboardController < ApplicationController
   	@searched_users = User.where(conditions) if params[:search_term]
     @feed = Feed.new
     @feeds = current_user.feeds.order(id: :desc)
+    @searched_feeds = Feed.search(params[:keyword]) if params[:keyword]
   end
 
   def follow
