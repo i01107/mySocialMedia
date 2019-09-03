@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  	@followings = current_user.followings
+  	@followings = current_user.followings.includes(:feeds)
   	@followers = current_user.followers
 
     conditions = "id != #{current_user.id} AND (email rlike '#{params[:search_term]}' OR first_name rlike '#{params[:search_term]}' OR last_name rlike '#{params[:search_term]}')"

@@ -49,7 +49,12 @@
 
   <div class="col-4">
     <div class="section">
-      <h3>Friends Feeds</h3>
+      <h3>Following Feeds</h3>
+      <% @followings.each do |fol| %>
+        <% fol.feeds.each do |f| %>
+          <%= "#{fol.first_name} - #{f.content}<br>".html_safe %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
