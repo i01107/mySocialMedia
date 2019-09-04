@@ -11,4 +11,6 @@ class Feed < ApplicationRecord
       indexes :content, type: :text, analyzer: :english
     end
   end
+
+  validates :content, presence: true
 end
